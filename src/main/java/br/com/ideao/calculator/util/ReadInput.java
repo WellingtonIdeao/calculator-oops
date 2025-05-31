@@ -4,7 +4,12 @@ import java.util.Scanner;
 
 public class ReadInput {
     public static String read() {
-        Scanner scanner = new Scanner(System.in);
+        String input = "";
+        try(Scanner scanner = new Scanner(System.in)) {
+            input = scanner.nextLine();
+        }
 
+        return input;
     }
+
 }
