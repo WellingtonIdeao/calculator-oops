@@ -2,9 +2,10 @@ package br.com.ideao.calculator;
 
 import br.com.ideao.calculator.model.Add;
 import br.com.ideao.calculator.model.Operator;
-import br.com.ideao.calculator.util.ReadInput;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Hello world!
@@ -19,10 +20,20 @@ public final class Calculator {
      * @param args The arguments of the program.
      */
     public static void main(String[] args) {
-        String inputExpr = ReadInput.read();
+        String inputExpr;
+        Pattern pattern = Pattern.compile("^[-+]?[0-9]+[-+*/][0-9]+([-+*/][0-9]+)*$");
+        Matcher matcher;
+        try(Scanner sc = new Scanner(System.in)) {
+            do {
+                System.out.println("digite uma expressão matematica: ex: 1+3");
+                inputExpr = sc.nextLine();
+                matcher = pattern.matcher(inputExpr);
+            } while(!matcher.matches());
+        }
+
+
         String[] numberArr = inputExpr.split("[-+*/%]");
         String[] operArr = inputExpr.split("\\d+");
-
 
 
         Queue<String> numbers = new LinkedList<>(Arrays.asList(numberArr));
