@@ -2,6 +2,7 @@ package br.com.ideao.calculator;
 
 import br.com.ideao.calculator.model.Add;
 import br.com.ideao.calculator.model.Operator;
+import br.com.ideao.calculator.model.Sub;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -48,6 +49,9 @@ public final class Calculator {
             switch (Objects.requireNonNull(opr)) {
                 case "+":
                     oprObj = new Add();
+                    break;
+                case "-":
+                    oprObj = new Sub();
                     break;
                 default:
                     continue;
