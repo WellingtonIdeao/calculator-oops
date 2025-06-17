@@ -20,7 +20,7 @@ public final class Calculator {
      */
     public static void main(String[] args) {
         String inputExpr;
-        Pattern pattern = Pattern.compile("^[-+]?[0-9]+[-+*/][0-9]+([-+*/][0-9]+)*$");
+        Pattern pattern = Pattern.compile("^[-+]?[0-9]+[-+*/%][0-9]+([-+*/%][0-9]+)*$");
         Matcher matcher;
         try(Scanner sc = new Scanner(System.in)) {
             do {
@@ -56,6 +56,9 @@ public final class Calculator {
                     break;
                 case "/":
                     oprObj = new Divide();
+                    break;
+                case "%":
+                    oprObj = new Modulus();
                     break;
                 default:
                     continue;
