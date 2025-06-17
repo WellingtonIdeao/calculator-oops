@@ -1,9 +1,6 @@
 package br.com.ideao.calculator;
 
-import br.com.ideao.calculator.model.Add;
-import br.com.ideao.calculator.model.Multiply;
-import br.com.ideao.calculator.model.Operator;
-import br.com.ideao.calculator.model.Sub;
+import br.com.ideao.calculator.model.*;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -56,6 +53,9 @@ public final class Calculator {
                     break;
                 case "*":
                     oprObj = new Multiply();
+                    break;
+                case "/":
+                    oprObj = new Divide();
                     break;
                 default:
                     continue;
