@@ -1,6 +1,7 @@
 package br.com.ideao.calculator;
 
 import br.com.ideao.calculator.model.Add;
+import br.com.ideao.calculator.model.Multiply;
 import br.com.ideao.calculator.model.Operator;
 import br.com.ideao.calculator.model.Sub;
 
@@ -52,6 +53,9 @@ public final class Calculator {
                     break;
                 case "-":
                     oprObj = new Sub();
+                    break;
+                case "*":
+                    oprObj = new Multiply();
                     break;
                 default:
                     continue;
