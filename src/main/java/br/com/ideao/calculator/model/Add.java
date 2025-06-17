@@ -1,6 +1,5 @@
 package br.com.ideao.calculator.model;
 
-import java.util.*;
 
 public class Add implements Operator{
 

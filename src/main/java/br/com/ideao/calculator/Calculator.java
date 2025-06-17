@@ -31,10 +31,8 @@ public final class Calculator {
             } while(!matcher.matches());
         }
 
-
         String[] numberArr = inputExpr.split("[-+*/%]");
         String[] operArr = inputExpr.split("\\d+");
-
 
         Queue<String> numbers = new LinkedList<>(Arrays.asList(numberArr));
         Queue<String> operators = new LinkedList<>(Arrays.asList(operArr));
@@ -43,28 +41,23 @@ public final class Calculator {
 
         Double result = Double.parseDouble(Objects.requireNonNull(numbers.poll()));
 
-        Operator operator = null;
         while(!numbers.isEmpty()) {
+            String opr = operators.poll();
+            Operator oprObj;
 
-               if(!operators.isEmpty()) {
-                   String op = operators.poll();
-                   switch (op) {
-                       case "+":
-                           operator = new Add();
-                           break;
-                       default:
-                           break;
+            switch (Objects.requireNonNull(opr)) {
+                case "+":
+                    oprObj = new Add();
+                    break;
+                default:
+                    continue;
+            }
 
-                   }
-
-               }
-               Double num = Double.parseDouble(Objects.requireNonNull(numbers.poll()));
-               if (operator != null) {
-                   result = operator.operation(result, num);
-               }
+            Double num = Double.parseDouble(Objects.requireNonNull(numbers.poll()));
+            result = oprObj.operation(result, num);
         }
-        System.out.println(result);
 
+        System.out.println(inputExpr + " = " +result);
     }
     private static void  cleanCollection(Collection<String> list) {
         for(Iterator<String> iter = list.iterator(); iter.hasNext();) {
